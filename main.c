@@ -187,7 +187,11 @@ char *my_read_file(const char *filename)
 	{
 		if (ch == ';')
 		{
-			while ((ch = fgetc(f)) != '\n')
+			do
+			{
+				ch = fgetc(f);
+			}
+			while (ch != '\n' && ch != EOF);
 			continue;
 		}
 		if (ch != '\n' && ch != '\r' && ch != ' ')
