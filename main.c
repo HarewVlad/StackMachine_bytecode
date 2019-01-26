@@ -126,6 +126,7 @@ void vm_exec(const char *code)
 				left = pop();
 				pushes(1);
 				push(left / right);
+				break;
 			case HALT:
 				return;
 			default:
