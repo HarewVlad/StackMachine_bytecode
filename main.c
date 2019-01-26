@@ -196,7 +196,6 @@ char *my_read_file(const char *filename)
 	*stream = '\0';
 
 	return stream_return;
-
 }
 
 int main(void)
