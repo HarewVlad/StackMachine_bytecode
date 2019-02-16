@@ -1,12 +1,5 @@
-#include <stdio.h>
-#include <limits.h>
-#include <assert.h>
-#include <stdlib.h>
-#include <stdint.h>
-#include <stddef.h>
-#include <stdbool.h>
-#include <string.h>
-#include <stdarg.h>
+#include "utils.c"
+#include "main_generator.c"
 
 enum {MAX_STACK = 1024};
 
@@ -71,17 +64,6 @@ void stack_test()
 	assert(pop() == 64);
 	assert(pop() == 0);
 	assert(pop() == 32);
-}
-
-void fatal(const char *fmt, ...)
-{
-    va_list args;
-    va_start(args, fmt);
-    printf("FATAL: ");
-    vprintf(fmt, args);
-    printf("\n");
-    va_end(args);
-    exit(1);
 }
 
 void vm_exec(const char *code)
@@ -173,11 +155,11 @@ int bytes_in_file(FILE *f)
 	return result;
 }
 
-char *my_read_file(const char *filename)
+char *read_file(const char *filename)
 {	
 	FILE *f = fopen(filename, "r");
 	if (!f)
-		fatal("my_read_file: can't open the file");
+		fatal("read_file: can't open the file");
 
 
 	int size = bytes_in_file(f);
@@ -199,13 +181,17 @@ char *my_read_file(const char *filename)
 			*stream++ = ch;
 	}
 	*stream = '\0';
-
+	fclose(f);
 	return stream_return;
 }
 
+#define GEN_CODE(x, y) generate_code(#x, y)
+
 int main(void)
 {
-	const char *source = my_read_file("test.txt");
+	GEN_CODE((1 + 2) * 3 / 2 - 1, "code.txt");
+
+	const char *source = read_file("code.txt");
 
 	stack_test();
 	vm_exec(source);
