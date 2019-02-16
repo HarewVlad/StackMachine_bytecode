@@ -94,8 +94,6 @@ int parse_expr3()
 	if (is_token(TOKEN_INT))
 	{
 		int val = token.val;
-		write_string(output, "00000001 ; LIT\n");
-		write_digit(output, val);
 		next_token();
 		return val;
 	}
