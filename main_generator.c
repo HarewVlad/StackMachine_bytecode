@@ -122,7 +122,12 @@ int parse_expr2()
 		return val;
 	}
 	else
-		return parse_expr3();
+	{
+		int val = parse_expr3();
+		write_string(output, "00000001 ; LIT\n");
+		write_digit(output, val);
+		return val;
+	}
 }
 
 int parse_expr1()
