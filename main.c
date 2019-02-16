@@ -189,7 +189,7 @@ char *read_file(const char *filename)
 
 int main(void)
 {
-	GEN_CODE((1 + 2) * 3 / 2 - 1, "code.txt");
+	GEN_CODE((1 + -2) * 3 / 2 - 1, "code.txt");
 
 	const char *source = read_file("code.txt");
 
