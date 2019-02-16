@@ -72,7 +72,7 @@ inline bool match_token(TokenKind kind)
 	}
 	else
 	{
-		return true;
+		return false;
 	}
 }
 
