@@ -26,7 +26,7 @@ void write_string(FILE *f, const char *str)
 		fatal("Cant write the string");
 }
 
-int msb_index(int val)
+int msb_index(unsigned int val)
 {
 	int index = 0;
 	for (int shift = 0; val; val >>= 1, shift++)
