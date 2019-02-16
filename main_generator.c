@@ -181,7 +181,7 @@ void init_stream(const char *source)
 
 void generate_code(const char *source, const char *path)
 {
-	output = fopen(path, "r+");
+	output = fopen(path, "w+");
 	if (!output)
 		fatal("Cant open the file");
 
