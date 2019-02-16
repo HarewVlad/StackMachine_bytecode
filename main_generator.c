@@ -114,9 +114,12 @@ int parse_expr3()
 
 int parse_expr2()
 {
-	if (match_token('~'))
+	if (match_token('-'))
 	{
-		return -parse_expr3();
+		int val = -parse_expr3();
+		write_string(output, "00000001 ; LIT\n");
+		write_digit(output, val);
+		return val;
 	}
 	else
 		return parse_expr3();
