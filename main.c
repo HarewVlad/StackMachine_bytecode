@@ -161,7 +161,6 @@ char *read_file(const char *filename)
 	if (!f)
 		fatal("read_file: can't open the file");
 
-
 	int size = bytes_in_file(f);
 	char *stream = malloc(size);
 	char *stream_return = stream;
