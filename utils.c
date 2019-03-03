@@ -42,7 +42,7 @@ void write_digit(FILE *f, int val)
 	int index = msb_index(val);
 	int padding = 31 - index - 1;
 
-	char str[32]; // 1 - '\0'
+	char str[32];
 	memset(str, '0', 32);
 
 	for (int i = 31, temp_val = val; i > padding; i--, temp_val >>= 1)
