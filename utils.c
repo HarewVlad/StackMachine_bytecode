@@ -37,7 +37,7 @@ int msb_index(unsigned int val)
 	return index;
 }
 
-void write_digit(FILE *f, int val) // TODO: sign
+void write_digit(FILE *f, int val)
 {
 	int index = msb_index(val);
 	int padding = 31 - index - 1;
